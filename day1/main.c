@@ -6,8 +6,11 @@
 
 i32 main(void)
 {
-  String table[11] = {{0}, str("one"), str("two"), str("three"), str("four"), str("five"),
-                           str("six"), str("seven"), str("eight"), str("nine"), str("ten")};
+  String table[10] = 
+  {
+    str("one"), str("two"), str("three"), str("four"), str("five"),
+    str("six"), str("seven"), str("eight"), str("nine"), str("ten")
+  };
 
   String res_str = str_alloc(16);
   i32 res_num = 0;
@@ -28,14 +31,14 @@ i32 main(void)
         res_idx++;
       }
 
-      for (u8 j = 1; j < 11; j++)
+      for (u8 j = 0; j < 10; j++)
       {
         if (line.len < table[j].len+i) continue;
 
         String substr = str_substr(line, i, i + table[j].len );
         if (str_contains(substr, table[j]))
         {
-          res_str.str[res_idx] = j + 48;
+          res_str.str[res_idx] = j + 49;
           i += table[j].len - 2;
           res_idx++;
         }
