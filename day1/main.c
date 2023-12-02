@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../common.h"
-#include "../string.h"
+#include "ext/common.h"
+#include "ext/string.h"
 
 i32 main(void)
 {
   String table[11] = {{0}, str("one"), str("two"), str("three"), str("four"), str("five"),
                            str("six"), str("seven"), str("eight"), str("nine"), str("ten")};
-
-  FILE *in = stdin;
 
   String res_str = str_alloc(16);
   i32 res_num = 0;
@@ -17,7 +15,7 @@ i32 main(void)
   i32 sum = 0;
 
   String line = str_alloc(1024);
-  while (fgets(line.str, 1024, in) != NULL)
+  while (fgets(line.str, 1024, stdin) != NULL)
   {
     line.len = cstr_len(line.str)-1;
 
