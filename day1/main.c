@@ -30,8 +30,9 @@ i32 main(void)
 
       for (u8 j = 1; j < 11; j++)
       {
-        u64 end = line.len < table[j].len+i ? line.len : table[j].len+i;
-        String substr = str_substr(line, i, end);
+        if (line.len < table[j].len+i) continue;
+
+        String substr = str_substr(line, i, i + table[j].len );
         if (str_contains(substr, table[j]))
         {
           res_str.str[res_idx] = j + 48;
